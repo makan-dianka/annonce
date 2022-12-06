@@ -1,0 +1,33 @@
+{% extends 'sonishop/layout/base.html' %}
+{% block title %} <title>{{ article.title }}</title> {% endblock %}
+
+{% block content %}
+    <div class="col-md-4">
+        {% for photo in article.images.all %}
+            <img src="{{ photo.photo.url }}" class="d-block w-10" alt="{{ article.title }}" width="200" height="200">
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        {% if user.is_authenticated and request.user == article.author %}
+            <p><a href="/article/{{ article.id }}/edit">Edit text</a></p>
+        {% endif %}
+        <h3>{{article.title}}</h3>
+        <p>{{ article.details }}</p>
+        <h3>{{article.price}}€</h3> <br /> <br />
+
+        {% if user.is_authenticated and request.user == article.author %}
+            {% if article.images.all|length != 3 %}
+                <form method="POST" action="" enctype='multipart/form-data'> {% csrf_token %}
+                    {{  form  }} <br /> <br />
+                    <button type="submit" class="btn btn-primary">Ajouter la photo</button>
+                </form>
+            {% endif %}
+        {%  endif %}
+    </div>
+
+    <script>
+        userId = "{{ request.user.id }}"
+        authorPhoto = document.querySelector("#author-photo")
+        authorPhoto.value = userId
+    </script>
+{% endblock %}

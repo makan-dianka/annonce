@@ -1,0 +1,29 @@
+{% extends 'sonishop/layout/base.html' %}
+{% block title %} <title>Page index</title> {% endblock %}
+
+{% block content %}
+
+<div class="col-md-5">
+    <p><a href="/article">Postuler une annonce</a></p>
+    {% for article in articles %}
+        <div class="card">
+            <!-- <div class="card-header bg-success text-white">
+            Publié le {{ article.creat_at }}
+            </div> -->
+            <div class="card-body">
+                {% with article.images.all|first  as first_object %}
+                    {% if first_object.photo %}
+                        <a href="/article/{{article.id}}"><img src="{{ first_object.photo.url }}" class="card-img-top" alt="photo" width="250" height="250"></a>
+                    {% endif %}
+                {% endwith %}
+            
+                <h3 class="card-title"><a href="/article/{{article.id}}">{{ article.title }}</a></h3>
+                <p class="card-title">{{ article.details|truncatewords:10 }}</p>
+                <h5 class="card-text">{{ article.price }}€</h5>
+                <!-- <a href="/article/{{article.id}}" class="btn btn-success research-btn" target="_blank">Détails</a> -->
+            </div>
+        </div> <br />
+    {% endfor %}
+</div>
+
+{% endblock %}

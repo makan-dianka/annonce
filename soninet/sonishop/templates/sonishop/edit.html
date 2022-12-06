@@ -1,0 +1,16 @@
+{% extends 'sonishop/layout/base.html' %}
+{% block title %} <title>{{ article.title }}</title> {% endblock %}
+
+{% block content %}
+    <div class="col-md-4">
+        {% if user.is_authenticated and request.user == article.author %}
+            <form method="POST" action="" enctype='multipart/form-data'> {% csrf_token %}
+                {{  form  }} <br /> <br />
+                <button type="submit" class="btn btn-primary">appliquer</button>
+            </form>
+        {% else %}
+            <h5 class="text-warning">Cette page n'existe pas ou l'access refusé</h5>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+.venv
+soninet/soninet/__pycache__
+soninet/sonishop/__pycache__
+soninet/sonishop/migrations

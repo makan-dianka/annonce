@@ -1,0 +1,23 @@
+{% extends 'sonishop/layout/base.html' %}
+{% block title %} <title>New article</title> {% endblock %}
+
+{% block content %}
+
+<div class="col-md-4">
+    {% if user.is_authenticated %}
+        <form method="POST" action="">{%  csrf_token  %} <br />
+            {{ form }} <br /> <br />
+            <button class="btn btn-primary" type="submit">Créer l'annonce</button>
+        </form>
+    {% else %}
+        <p><a href="#">Connectez-vous</a> pour pouvoir publier des annonces</p>
+    {% endif %}
+</div>
+
+<script>
+    userId = "{{ request.user.id }}"
+    authorArticle = document.querySelector("#author-article")
+    authorArticle.value = userId
+</script>
+
+{% endblock %}

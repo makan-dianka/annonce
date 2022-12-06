@@ -1,0 +1,20 @@
+h1{
+    color: red;
+}
+
+h3 a{
+    text-decoration: none;
+    color: black;
+}
+
+#author-photo{
+    margin-bottom: 25px;
+}
+
+#details{
+    margin-bottom: 25px;
+}
+
+.b-content{
+    margin-top: 150px;
+}
