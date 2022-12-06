@@ -3,3 +3,4 @@ soninet/soninet/__pycache__
 soninet/sonishop/__pycache__
 soninet/sonishop/migrations
 soninet/static/media/media/img
+soninet/db.sqlite3
